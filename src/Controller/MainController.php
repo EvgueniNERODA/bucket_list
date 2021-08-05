@@ -14,7 +14,7 @@ class MainController extends AbstractController
     public function home():Response
     {
         //$route = new Route
-        return $this->render("personne/home.html.twig");
+        return $this->render("back/home.html.twig");
     }
 
     /**
@@ -22,7 +22,7 @@ class MainController extends AbstractController
      */
     public function contact():Response
     {
-        return $this->render("personne/contact.html.twig");
+        return $this->render("back/contact.html.twig");
     }
 
     /**
@@ -30,6 +30,6 @@ class MainController extends AbstractController
      */
     public function about():Response
     {
-        return $this->render("personne/about.html.twig");
+        return $this->render("back/about.html.twig");
     }
 }

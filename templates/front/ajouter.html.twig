@@ -1,0 +1,22 @@
+{% extends 'front.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} Ajouter - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%}
+<h1>Ajouter du Wish</h1>
+
+{% endblock %}
+
+{% block contenu %}
+    <div class="col-3">
+        {{ form_start(formWish) }}
+
+        {{ form_widget(formWish) }}
+
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+        {{ form_end(formWish) }}
+    </div>
+{% endblock %}
