@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} About - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+    <h1>About</h1>
+   
+{% endblock %}
+
+{% block contenu %}
+ Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto est repudiandae, assumenda ab porro minima beatae perferendis incidunt maiores a sequi ratione consequatur dolores suscipit minus atque, non quasi amet.
+   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia quidem recusandae deleniti fugit dolorem omnis tempora iure ducimus hic culpa eveniet, tempore animi. Modi, placeat fugit. Sapiente omnis laudantium repellat?
+   Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus neque magnam ullam sit fuga ut, quidem eaque impedit reiciendis iure! Reprehenderit sapiente rem impedit distinctio officia ipsam inventore in illum!
+   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque laboriosam ad blanditiis deserunt aspernatur dolores asperiores architecto! Nulla, iusto! Harum accusamus pariatur quos porro natus omnis dolores nesciunt labore quia.
+{% endblock %}

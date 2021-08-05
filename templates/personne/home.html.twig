@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} Home - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+    <h1>Home</h1>
+    {#lien vers ajouter#}
+    <a href="{{path('ajouter')}}" class="btn btn-success" role="button">Ajouter</a>
+    {#enlever l'id du wish avec path#}
+    {% set myId = 3 %}
+    <a href="{{ path('enlever',{ 'id' : myId }) }}" class="btn btn-danger" role="button">Enlever</a>
+{% endblock %}

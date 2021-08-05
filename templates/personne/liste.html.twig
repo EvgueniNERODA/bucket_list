@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} About - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+    <h1 id="wishes">Wishes</h1>
+   
+{% endblock %}
+
+{% block contenu %}
+<div class="tab_wishes">
+ <table class="table table-dark table-striped" >
+   <tbody>
+   {% for w in wishes %}
+     <tr>
+       <td>{{ w.title }}</td> 
+       <td>{{ w.description }}</td> 
+       <td>{{ w.title }}</td> 
+       <td>{{ w.author }}</td> 
+       <td>{{ w.getDateCreated.format("d/m/Y") }}</td> 
+       <td><a href="{{ path('enlever', {id:w.id}) }}" class="btn btn-danger">enlever</a></td>
+     </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+ </div>
+{% endblock %}

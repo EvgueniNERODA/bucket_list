@@ -1,0 +1,29 @@
+h1{ color: #f75200;}
+#content {
+    height: 50rem;
+    
+
+   
+}
+#logo {
+display: flex;
+align-items: baseline;
+}
+
+#logo > h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+#logo {
+    padding: 0;
+}
+
+.logo-noir {
+    filter: invert(65%) sepia(96%) saturate(5997%) hue-rotate(3deg) brightness(99%) contrast(102%);
+    height: 4rem;
+}
+
+#wishes {
+    margin-top: 5rem;
+}
