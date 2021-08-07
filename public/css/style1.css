@@ -1,0 +1,135 @@
+h1{ color: #f75200;
+    font-family: 'Hind', sans-serif;
+
+}
+
+
+
+/**
+body {
+    margin: 0;
+}
+
+/*********** navbar responsive *************/
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #212529;
+}
+
+ul.topnav li {
+
+    float: left;
+
+}
+
+li {
+    height: 5rem;
+    vertical-align: middle;
+}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0 16px;
+    text-decoration: none;
+
+
+}
+
+/*ul.topnav li a:hover:not(.active){background-color: #111;}*/
+
+ul.topnav li a.active {
+
+
+    border-bottom: 3px solid #f75200;
+
+
+
+}
+
+ul.topnav li.right {
+    float: right;
+    vertical-align: middle;
+
+}
+
+
+.right {
+
+    text-decoration: none;
+    color: #000;
+    gap: 10rem;
+}
+
+a {
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+
+a:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f75200;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms; }
+
+a:hover::after,
+a:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+}
+
+
+
+@media screen and (max-width: 600px) {
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+    ul.topnav li a#logo h1.titre {font-size: 2.5rem}
+
+}
+
+
+
+/********** contenu de la page ************/
+
+#content {
+    height: 50rem;
+    
+
+   
+}
+
+
+
+#logo {
+display: flex;
+align-items: baseline;
+}
+
+#logo > h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+#logo {
+    padding: 0;
+}
+
+.logo-noir {
+    filter: invert(65%) sepia(96%) saturate(5997%) hue-rotate(3deg) brightness(99%) contrast(102%);
+    height: 4rem;
+}
+
+#wishes {
+    margin-top: 5rem;
+}

@@ -6,10 +6,19 @@
 {# avec parent je recupere le contenu du bloque parent #}
 
 {% block central%} 
-    <h1>Home</h1>
+
+
+        <h1>Home</h1>
+
+
     {#lien vers ajouter#}
     <a href="{{path('ajouter')}}" class="btn btn-success" role="button">Ajouter</a>
+
     {#enlever l'id du wish avec path#}
-    {% set myId = 3 %}
-    <a href="{{ path('enlever',{ 'id' : myId }) }}" class="btn btn-danger" role="button">Enlever</a>
+    {# {% set myId = 3 %} #}
+    {# <a href="{{ path('enlever',{ 'id' : myId }) }}" class="btn btn-danger" role="button">Enlever</a>  #}
+
+
+
+
 {% endblock %}

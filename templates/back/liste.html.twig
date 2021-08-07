@@ -11,16 +11,23 @@
 {% endblock %}
 
 {% block contenu %}
+    {# message flash #}
+
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+    <div class="alert-{{ label }}">{{ message }}</div>
+    {% endfor %}
+    {% endfor %}
+
 <div class="tab_wishes">
  <table class="table table-dark table-striped" >
    <tbody>
    {% for w in wishes %}
      <tr>
        <td>{{ w.title }}</td> 
-       <td>{{ w.description }}</td> 
-       <td>{{ w.title }}</td> 
-       <td>{{ w.author }}</td> 
-       <td>{{ w.getDateCreated.format("d/m/Y") }}</td> 
+       <td>{{ w.description }}</td>
+       <td>{{ w.author }}</td>
+       <td>{{ w.getDateCreated|date("d/m/Y") }}</td>
        <td><a href="{{ path('enlever', {id:w.id}) }}" class="btn btn-danger">enlever</a></td>
      </tr>
      {% endfor %}

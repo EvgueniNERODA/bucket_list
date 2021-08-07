@@ -1,0 +1,97 @@
+
+
+.logo-noir {
+    filter: invert(65%) sepia(96%) saturate(5997%) hue-rotate(3deg) brightness(99%) contrast(102%);
+    height: 4rem;
+}
+
+h1 {
+    color: #f75200;
+}
+
+nav.content {
+
+    margin-right: 20rem;
+    max-width: initial;
+    width: initial;
+    top: 0;
+    bottom: 0;
+}
+
+header a#logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 20rem;
+}
+
+header a#logo h1.titre {
+    margin: 0;
+    height: 4rem;
+    font-size: 3rem;
+
+}
+
+nav.content {
+    display: inline-block;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+
+nav.content li.right {
+    display: inline-block;
+    position: relative;
+
+
+
+}
+
+nav.content li.right a.link {
+    text-decoration: none;
+    color: #dfdfdf;
+    margin: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+
+}
+
+header {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    background-color: #212529;
+    padding: 3px;
+}
+
+/* activation des liens menu */
+
+ul.topnav li a.active {
+    border-bottom: 3px solid #f75200;
+}
+
+/* animation menu */
+
+a.link {
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+
+a.link:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f75200;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms; }
+
+a.link:hover::after,
+a.link:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+}

@@ -4,8 +4,6 @@ namespace App\Controller;
 use App\Entity\Wish;
 use App\Form\AddWishType;
 use App\Repository\WishRepository;
-
-
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,7 +51,8 @@ class WishController extends AbstractController
 
         if ($formWish->isSubmitted() && $formWish->isValid())
         {
-
+            $this->addFlash('success', 'Wish added!');
+            $wish->setIsPublished(0);
             $em->persist($wish);
             $em->flush();
             return $this->redirectToRoute('list');

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\WishRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=WishRepository::class)
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Wish
 {
     /**
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -18,21 +20,26 @@ class Wish
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un titre !")
+     * @Assert\Length(min="3")
      * @ORM\Column(type="string", length=250)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(message="Veuillez renseigner une description !")
+     * @ORM\Column(type="text", nullable=true )
      */
     private $description;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner votre nom !")
      * @ORM\Column(type="string", length=50)
      */
     private $author;
 
     /**
+     *
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isPublished;
