@@ -17,6 +17,7 @@ class AddWishType extends AbstractType
             ->add('description',null, ['required'=>false])
             ->add('author', null, ['required'=>false])
             //->add('isPublished')
+            ->add('category', null, ['required'=>false, 'choice_label'=>'name'])
             ->add('dateCreated',DateType::class,['required'=>false,'html5'=>true, 'widget'=>'single_text'])
         ;
     }

@@ -7,4 +7,40 @@
 
 {% block central %} 
     <h1>Detail</h1>
+
+
+    <div class="tab_wishes">
+        <table class="table table-dark table-striped" >
+            <tbody>
+
+
+                <tr>
+                    <td>{{ wishes.title }}</td>
+                    <td>{{ wishes.description }}</td>
+                    <td>{{ wishes.author }}</td>
+                    <td>{{ wishes.getDateCreated|date("d/m/Y") }}</td>
+                    <td>{{ wishes.category.name }}</td>
+                    <td><button class="btn btn-danger" id="myBtn">enlever</button>
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>Etes vous sûr de vouloir supprimer?</p>
+                                <a href="{{ path('enlever', {id:wishes.id}) }}" class="btn btn-danger" >enlever</a>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td><a href="{{ path('modifier', {id:wishes.id}) }}" class="btn btn-danger">modifier</a></td>
+
+                </tr>
+
+
+            <script src="{{ asset('javascript/modal.js') }}"></script>
+            </tbody>
+        </table>
+    </div>
+
+
 {% endblock %}

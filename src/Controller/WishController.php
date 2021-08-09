@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\Wish;
 use App\Form\AddWishType;
+use App\Repository\CategoryRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -13,25 +14,34 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WishController extends AbstractController
 {
-    
+
     /**
      * @Route("/list", name="list")
+     * @param WishRepository $repo
+     * @return Response
      */
     public function list(WishRepository $repo):Response
     {
         //$route = new Route
 
-        $wishes = $repo->findAll();
+        //$wishes = $repo->findAll();
+       $wishes = $repo->findBy([],['category' => 'DESC']);
 
         return $this->render("back/liste.html.twig", ['wishes'=>$wishes]);
     }
 
     /**
-     * @Route("/detail", name="detail")
+     * @Route("/detail/{id}", name="detail")
+     * @param int $id
+     * @param WishRepository $repo
+     * @return Response
      */
-    public function detail():Response
+    public function detail(int $id,WishRepository $repo):Response
     {
-        return $this->render("back/detail.html.twig");
+        $wishes = $repo->find($id);
+
+        return $this->render("back/detail.html.twig", ['wishes'=>$wishes]);
+
     }
 
     /**
