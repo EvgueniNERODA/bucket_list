@@ -80,6 +80,33 @@ class WishController extends AbstractController
          */
     }
 
+
+    /**
+     * @Route("/modifier/{id}", name="modifier")
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function modifier(Wish $wish, EntityManagerInterface $em, Request $request):Response
+    {
+        //on crée une entity vide
+        //$wish = new Wish();
+        //on crée le fomrulaire (type de formulaire + entity)
+        $formWish = $this->createForm(AddWishType::class, $wish);
+        // associer le formulaire avec les données envoyées
+        // hydrater $personne
+        $formWish->handleRequest($request);
+
+        if ($formWish->isSubmitted() && $formWish->isValid()) {
+            $this->addFlash('success', 'Wish modified!');
+            $wish->setIsPublished(0);
+            //$em->persist($wish);
+            $em->flush();
+            return $this->redirectToRoute('list');
+        }
+
+        return $this->render('/front/ajouter.html.twig', ['formWish' => $formWish->createView()]);
+    }
+
    /**
      * @Route("/enlever/{id}", name="enlever")
      */

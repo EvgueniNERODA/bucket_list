@@ -26,7 +26,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/about-us-toto", name="about")
+     * @Route("/about", name="about")
      */
     public function about():Response
     {
