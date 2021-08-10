@@ -16,8 +16,10 @@ class AddWishType extends AbstractType
             ->add('title',null, ['required'=>false,'label'=>'Titre', 'attr'=>['placeholder'=>'Titre du wish']])
             ->add('description',null, ['required'=>false])
             ->add('author', null, ['required'=>false])
-            //->add('isPublished')
+            ->add('isPublished',null, ['required'=>false])
             ->add('category', null, ['required'=>false, 'choice_label'=>'name'])
+            //rajouter un champ hors l'attribut de l'entity wish
+            //->add('info', null, ['mapped'=>false])
             ->add('dateCreated',DateType::class,['required'=>false,'html5'=>true, 'widget'=>'single_text'])
         ;
     }

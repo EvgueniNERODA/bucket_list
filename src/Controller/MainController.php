@@ -1,20 +1,28 @@
 <?php
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+/**
+ * @Route("/main")
+ */
 class MainController extends AbstractController
 {
     
     /**
      * @Route("/", name="home")
      */
-    public function home():Response
+    public function home(CategoryRepository $repo):Response
     {
+
+        //$categs = $repo->findAll();
+        $categs = $repo->findByPublished();
         //$route = new Route
-        return $this->render("back/home.html.twig");
+        return $this->render("main/home.html.twig", compact('categs'));
     }
 
     /**
@@ -22,7 +30,7 @@ class MainController extends AbstractController
      */
     public function contact():Response
     {
-        return $this->render("back/contact.html.twig");
+        return $this->render("wish/contact.html.twig");
     }
 
     /**
@@ -30,6 +38,6 @@ class MainController extends AbstractController
      */
     public function about():Response
     {
-        return $this->render("back/about.html.twig");
+        return $this->render("main/about.html.twig");
     }
 }

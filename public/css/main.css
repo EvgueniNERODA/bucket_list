@@ -44,7 +44,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 1px solid #212529;
+    border: 1px solid #212529 ;
+
+
 
 }
 
@@ -97,4 +99,33 @@ tr {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Formulaire ajouter */
+div.form_add {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+div.form_add form  {
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    border: none;
+    border-bottom: solid 1px #2F4858;
+}
+
+.form-control:focus {
+    border-bottom: solid 1px #EC2A5C;
+    outline: 0;
 }

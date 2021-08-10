@@ -1,0 +1,68 @@
+{% extends 'front.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} Dashboard Wishes - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+
+
+        <h1>Dashboard</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Categorie</th>
+            <th>Date</th>
+            <th>Publication</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for w in wishes %}
+        <tr>
+            <td>{{ w.title }}</td>
+            <td>{{ w.category.name }}</td>
+            <td>{{ w.dateCreated|date('d/m/Y') }}</td>
+            <td>
+                {% if w.isPublished %}
+                     en ligne
+                {% else %}
+                    en attente
+                {% endif %}</td>
+            <td>
+                <a href="{{ path('modifier', {id:w.id}) }}" class="btn btn-danger">modifier</a>
+                <button class="btn btn-danger" id="myBtn">enlever</button>
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Etes vous sûr de vouloir supprimer?</p>
+                        <a href="{{ path('wish_enlever', {id:w.id}) }}" class="btn btn-danger" >enlever</a>
+                    </div>
+
+                </div>
+            </td>
+
+
+
+
+        </tr>
+        <script src="{{ asset('javascript/modal.js') }}"></script>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#lien vers ajouter#}
+    <a href="{{path('ajouter')}}" class="btn btn-success" role="button">Ajouter</a>
+
+    {#enlever l'id du wish avec path#}
+    {# {% set myId = 3 %} #}
+    {# <a href="{{ path('enlever',{ 'id' : myId }) }}" class="btn btn-danger" role="button">Enlever</a>  #}
+
+
+
+
+{% endblock %}

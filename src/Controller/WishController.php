@@ -12,8 +12,34 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+/**
+ * @Route("/wish")
+ */
 class WishController extends AbstractController
 {
+
+    /**
+     * @Route ("/", name="wish_home")
+     */
+    public function home (WishRepository $repo):Response {
+        $wishes = $repo->findAll();
+        return $this->render("wish/home.html.twig",compact('wishes'));
+    }
+
+    /**
+     * @Route("/wish_enlever{id}", name="wish_enlever")
+     */
+    public function wish_enlever(Wish $wish, EntityManagerInterface $em):Response
+    {
+
+        //autre méthode (vider les paramètres de ajouter ())
+        //$em = $this->getDoctrine()->getManager();
+        $em->remove($wish);
+        $em->flush();
+        //return $this->json($wish);
+        return $this->redirectToRoute('home');
+    }
 
     /**
      * @Route("/list", name="list")
@@ -27,7 +53,7 @@ class WishController extends AbstractController
         //$wishes = $repo->findAll();
        $wishes = $repo->findBy([],['category' => 'DESC']);
 
-        return $this->render("back/liste.html.twig", ['wishes'=>$wishes]);
+        return $this->render("wish/liste.html.twig", ['wishes'=>$wishes]);
     }
 
     /**
@@ -40,7 +66,7 @@ class WishController extends AbstractController
     {
         $wishes = $repo->find($id);
 
-        return $this->render("back/detail.html.twig", ['wishes'=>$wishes]);
+        return $this->render("wish/detail.html.twig", ['wishes'=>$wishes]);
 
     }
 
@@ -68,7 +94,7 @@ class WishController extends AbstractController
             return $this->redirectToRoute('list');
         }
 
-        return $this->render('/front/ajouter.html.twig',['formWish'=>$formWish->createView()]);
+        return $this->render('/main/ajouter.html.twig',['formWish'=>$formWish->createView()]);
         /**
          * //autre méthode (vider les paramètres de ajouter ())
          * //$em = $this->getDoctrine()->getManager();
@@ -108,26 +134,27 @@ class WishController extends AbstractController
 
         if ($formWish->isSubmitted() && $formWish->isValid()) {
             $this->addFlash('success', 'Wish modified!');
-            $wish->setIsPublished(0);
+            //pour forcer le set published à 0
+            //$wish->setIsPublished(0);
             //$em->persist($wish);
             $em->flush();
-            return $this->redirectToRoute('list');
+            return $this->redirectToRoute('wish_home');
         }
 
-        return $this->render('/front/ajouter.html.twig', ['formWish' => $formWish->createView()]);
+        return $this->render('/main/ajouter.html.twig', ['formWish' => $formWish->createView()]);
     }
 
-   /**
-     * @Route("/enlever/{id}", name="enlever")
-     */
-    public function enlever(Wish $wish, EntityManagerInterface $em):Response
-    {   
-       
-        //autre méthode (vider les paramètres de ajouter ())
-        //$em = $this->getDoctrine()->getManager();
-        $em->remove($wish);
-        $em->flush();
-        //return $this->json($wish);
+
+
+    /**
+     * @Route("/", name="wish_home")
+
+    public function home(WishRepository $repo):Response
+    {
+
+        $wishes = $repo->findAll();
+
         return $this->redirectToRoute('home');
     }
+     *  */
 }

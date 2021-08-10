@@ -1,0 +1,22 @@
+{% extends 'front.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} Dashboard Wishes - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+
+
+        <h1>Home</h1>
+
+    {% for c in categs %}
+    <h3>{{ c.name }}</h3>
+    <ul>
+        {% for w in c.wishes %}
+        <li> {{ w.title }}</li>
+
+        {% endfor %}
+    </ul>
+    {% endfor %}
+{% endblock %}
